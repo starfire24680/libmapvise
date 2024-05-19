@@ -373,7 +373,6 @@ static inline struct libmapvise_map libmapvise_mmap_file(const char *file, uint6
 	}
 
 	size_t len = fileStat.st_size;
-	out.len = len;
 
 	void* mappedData = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	if (mappedData == MAP_FAILED) {
@@ -381,6 +380,8 @@ static inline struct libmapvise_map libmapvise_mmap_file(const char *file, uint6
 		out.len = errno;
 		return out;
 	}
+
+	out.len = len;
 
 	close(fd);
 	out.ptr = mappedData;

@@ -14,7 +14,7 @@ Check tests in tests/ directory for simple usage examples
 ## Library header file dependency
 
 libmapvise does not deliver any dependencies by itself, it is the
-responsability of the source file to deliver all dependencies needed for
+responsibility of the source file to deliver all dependencies needed for
 libmapvise
 
 Required dependencies are as follows:
