@@ -1,0 +1,6 @@
+include(GNUInstallDirs)
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libmmapvise
+	FILES_MATCHING PATTERN "*.h"
+)
