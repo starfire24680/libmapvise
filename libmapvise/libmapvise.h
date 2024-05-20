@@ -202,7 +202,7 @@ static inline uint64_t libmapvise_advice_transform(uint64_t *advice) {
 	}
 #endif
 
-#ifdef MADV_POPULATE_READ
+#ifdef MADV_POPULATE_WRITE
 	if(*advice & ADVISE_POPULATE_WRITE) {
 		*advice ^= ADVISE_POPULATE_WRITE;
 		return MADV_POPULATE_WRITE;
