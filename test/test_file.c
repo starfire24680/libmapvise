@@ -52,14 +52,13 @@
 #include <libmapvise/libmapvise.h>
 
 int main() {
-	size_t size = 1024 * 1024 * 1024;
 	struct libmapvise_map ret = libmapvise_mmap_file("/tmp/test", ADVISE_SEQUENTIAL | ADVISE_HUGEPAGE);
 	if (!ret.ptr) {
 		fprintf(stderr, "Error while mapping file, err %i\n", ret.len);
 		return 1;
 	}
 
-	libmapvise_madvise(ret.ptr, size, ADVISE_WILLNEED);
+	libmapvise_madvise(ret.ptr, ret.len, ADVISE_WILLNEED);
 
 	size = ret.len;
 	unsigned char *array = ret.ptr;
