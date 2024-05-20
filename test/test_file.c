@@ -58,7 +58,7 @@ int main() {
 		return 1;
 	}
 
-	libmapvise_madvise(ret.ptr, ret.len, ADVISE_WILLNEED);
+	libmapvise_madvise(ret.ptr, ret.len, ADVISE_POPULATE_READ);
 
 	size_t size = ret.len;
 	unsigned char *array = ret.ptr;

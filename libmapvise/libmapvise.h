@@ -53,7 +53,9 @@ enum libmapvise_advices {
 	ADVISE_DODUMP  = 0x8000,
 	ADVISE_FREE = 0x10000,
 	ADVISE_WIPEONFORK = 0x20000,
-	ADVISE_KEEPONFORK = 0x40000
+	ADVISE_KEEPONFORK = 0x40000,
+	ADVISE_POPULATE_READ = 0x80000,
+	ADVISE_POPULATE_WRITE = 0x100000
 };
 
 static inline uint64_t libmapvise_advice_transform(uint64_t *advice) {
@@ -190,6 +192,20 @@ static inline uint64_t libmapvise_advice_transform(uint64_t *advice) {
 	if(*advice & ADVISE_KEEPONFORK) {
 		*advice ^= ADVISE_KEEPONFORK;
 		return MADV_KEEPONFORK;
+	}
+#endif
+
+#ifdef MADV_POPULATE_READ
+	if(*advice & ADVISE_POPULATE_READ) {
+		*advice ^= ADVISE_POPULATE_READ;
+		return MADV_POPULATE_READ;
+	}
+#endif
+
+#ifdef MADV_POPULATE_READ
+	if(*advice & ADVISE_POPULATE_WRITE) {
+		*advice ^= ADVISE_POPULATE_WRITE;
+		return MADV_POPULATE_WRITE;
 	}
 #endif
 
