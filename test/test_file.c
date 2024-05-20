@@ -60,7 +60,7 @@ int main() {
 
 	libmapvise_madvise(ret.ptr, ret.len, ADVISE_WILLNEED);
 
-	size = ret.len;
+	size_t size = ret.len;
 	unsigned char *array = ret.ptr;
 
 	for(int i = 0; i < size; i++) {
